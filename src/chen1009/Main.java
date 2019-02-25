@@ -44,7 +44,8 @@ public class Main {
                     break;
                 }
             }
-            System.out.printf("%.3f\n", sumJavabeans);
+            System.out.printf("%.3f", sumJavabeans);
+            System.out.println();
         }
     }
 }
