@@ -8,50 +8,32 @@ import java.util.Scanner;
  * @description: 一个求排列的问题，所以用DFS+回溯即可
  */
 public class Main {
-    static int[] book;
-    static int[] a;
-    static int n;
-    static boolean haveResult = false;
-    static int resultNum = 1;
-    static int caseNum = 1;
+    private static int[] book;
+    private static int[] a;
+    private static int n;
+    private static int caseNum = 1;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (true) {
+        while (sc.hasNext()) {
             n = sc.nextInt();
             a = new int[n + 1];
-            book = new int[n + 1];
             a[1] = 1;
-            book[1] = 1;
-            haveResult = false;
-            resultNum = 1;
+            book = new int[n + 1];
+            System.out.println("Case " + caseNum++ + ":");
             dfs(2);
-            if (!haveResult){
-                break;
-            }
-            caseNum++;
+            System.out.println();
         }
 
     }
 
     public static void dfs(int step) {
         if (step == n + 1 && checkPrime(a[1] + a[n])) {
-            haveResult = true;
-            if (resultNum == 1){
-                if (caseNum != 1) {
-                    System.out.println();
-                }
-                System.out.println("Case " + caseNum + ":");
+            for (int i = 1; i < n; i++) {
+                System.out.print(a[i] + " ");
             }
-            for (int i = 1; i <= n; i++) {
-                if (i == n) {
-                    System.out.print(a[i]);
-                } else {
-                    System.out.print(a[i] + " ");
-                }
-            }
+            System.out.print(a[n]);
             System.out.println();
-            resultNum++;
             return;
         }
 
